@@ -140,3 +140,20 @@ if two_lecturer.agrade(two_lecturer.grades) > one_lecturer.agrade(one_lecturer.g
 else:
     print(f'{one_lecturer.name} {one_lecturer.surname} - {one_lecturer.agrade(one_lecturer.grades)}')
 print()
+
+def average_rating(list_stud, course, a=0, b=0):
+    for instance in list_stud:
+        if course in instance.grades.keys():
+            a += sum(list(map(int, instance.grades[course])))
+            b += len(list(map(int, instance.grades[course])))
+    average = round(a / b, 1)
+    return average
+
+print(f'Средняя оценка за курс Git среди студентов: {average_rating(Student.student_list, "Git")}')
+print(f'Средняя оценка за курс Git среди лекторов: {average_rating(Lecturer.lecturer_list, "Git")}')
+print(f'Средняя оценка за курс Python среди студентов: {average_rating(Student.student_list, "Python")}')
+print(f'Средняя оценка за курс Python среди лекторов: {average_rating(Lecturer.lecturer_list, "Python")}')
+
+
+
+
